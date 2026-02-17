@@ -1,87 +1,64 @@
-# Welcome to React Router!
+# Kotlin Homepage — React Router 7 Migration
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A migration of the [kotlinlang.org](https://kotlinlang.org) homepage from a Flask + client-side React setup to **React Router 7 Framework Mode** with **Server-Side Rendering**.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Based on the source project: [kotlin-web-site-jetsites-internship-2026](https://github.com/JetBrains/kotlin-web-site-jetsites-internship-2026)
 
-## Features
+## Stack
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **React Router 7** (Framework Mode, SSR enabled)
+- **React 18**
+- **@rescui** design system components (buttons, cards, tabs, typography)
+- **@jetbrains/kotlin-web-site-ui** for header & footer (client-only, loaded dynamically)
+- **SCSS** for styling
+- **Vite** for bundling
 
 ## Getting Started
 
-### Installation
-
-Install the dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+The site will be available at `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
+## Production Build
 
 ```bash
 npm run build
+npm run start
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+├── components/
+│   ├── index/              # Homepage sections
+│   │   ├── header-section/
+│   │   ├── latest-from-kotlin-section/
+│   │   ├── why-kotlin-section/
+│   │   ├── usage-section/
+│   │   └── start-section/
+│   ├── layout/             # Section & Container layout components
+│   ├── KTLHeader.tsx       # Header wrapper (client-only with skeleton)
+│   └── KTLFooter.tsx       # Footer wrapper (client-only with skeleton)
+├── css/                    # Global SCSS (grid, reset, fonts)
+├── routes/
+│   └── home.tsx            # Homepage route
+├── root.tsx                # Root layout
+└── routes.ts               # Route configuration
+public/
+└── assets/                 # Images, fonts, static files
 ```
 
-## Styling
+## Notes
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+See [REPORT.md](./REPORT.md) for details on SSR compatibility issues encountered during migration and how they were resolved.

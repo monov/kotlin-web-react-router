@@ -5,3 +5,11 @@
 # React Router
 /.react-router/
 /build/
+
+# IDE
+.idea/
+.vscode/
+.cursor/
+
+# Logs
+*.log
